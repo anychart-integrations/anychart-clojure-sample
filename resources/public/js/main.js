@@ -29840,3 +29840,21 @@ cljs.core.ns_name = function cljs$core$ns_name(ns_obj) {
 };
 goog.provide("sample.core");
 goog.require("cljs.core");
+sample.core.init = function sample$core$init() {
+  var G__9817_9820 = anychart.barChart();
+  G__9817_9820.container("rev-by-industry");
+  G__9817_9820.title("Revenue by industry");
+  G__9817_9820.bar([["P1", "128.14"], ["P2", "112.61"], ["P3", "163.21"], ["P4", "229.98"], ["P5", "90.54"]]);
+  G__9817_9820.draw();
+  var G__9818_9821 = anychart.columnChart();
+  G__9818_9821.container("rev-by-sales");
+  G__9818_9821.title("Revenue by sales rep");
+  G__9818_9821.column([["P1", "128.14"], ["P2", "128.14"], ["P3", "128.14"], ["P4", "128.14"], ["P5", "128.14"]]);
+  G__9818_9821.draw();
+  var G__9819 = anychart.pie([["Department Stores", 6371664], ["Discount Stores", 6371664]]);
+  G__9819.container("rev-by-product");
+  G__9819.title("Revenue by product");
+  G__9819.draw();
+  return G__9819;
+};
+goog.exportSymbol("sample.core.init", sample.core.init);

@@ -5,6 +5,9 @@
         <script src="http://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
         <script src="/js/main.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style type="text/css">
+         .chart { height: 400px; }
+        </style>
     </head>
     <body>
         <div class="container-fluid">
@@ -38,12 +41,60 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="industry" class="col-sm-1 control-label">Industry</label>
+                        <div>
+                            {% for i in industries %}
+                            <label class="checkbox-inline">
+                                <input type="checkbox" checked id="industry" value="{{i.id}}"> {{i.name}}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product" class="col-sm-1 control-label">Product</label>
+                        <div>
+                            {% for p in products %}
+                            <label class="checkbox-inline">
+                                <input type="checkbox" checked id="product" value="{{p.id}}" x-data-industry="{{p.industry_id}}"> {{p.name}}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="region" class="col-sm-1 control-label">Region</label>
+                        <div>
+                            {% for r in regions %}
+                            <label class="checkbox-inline">
+                                <input type="checkbox" checked id="region" value="{{r.id}}"> {{r.name}}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sales-rep" class="col-sm-1 control-label">Sales Rep:</label>
+                        <div>
+                            {% for s in sales-reps %}
+                            <label class="checkbox-inline">
+                                <input type="checkbox" checked id="sales-rep" value="{{s.id}}"> {{s.name}}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="row">
-                <div class="col-xs-6">left</div>
-                <div class="col-xs-6">right</div>
+                <div class="col-xs-6 chart" id="rev-by-industry"></div>
+                <div class="col-xs-6 chart" id="rev-by-sales"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 chart" id="rev-by-product"></div>
+                <div class="col-xs-6 chart" id="rev-by-quarter"></div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            sample.core.init();
+        </script>
     </body>
 </html>

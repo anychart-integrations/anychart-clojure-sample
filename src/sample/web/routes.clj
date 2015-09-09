@@ -11,7 +11,11 @@
   (-> request :component :jdbc))
 
 (defn- index-page [request]
-  (render-file "templates/index.selmer" {:years (data/years (jdbc request))}))
+  (render-file "templates/index.selmer" {:years (data/years (jdbc request))
+                                         :industries (data/industries (jdbc request))
+                                         :products (data/products (jdbc request))
+                                         :regions (data/regions (jdbc request))
+                                         :sales-reps (data/sales-reps (jdbc request))}))
 
 (defroutes app-routes
   (route/resources "/")
