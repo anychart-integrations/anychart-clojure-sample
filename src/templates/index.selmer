@@ -14,73 +14,12 @@
             <h1>Sales dashboard</h1>
             <div class="row">
                 <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="year" class="col-sm-1 control-label">Year</label>
-                        <div>
-                            {% for y in years %}
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="year" value="{{y}}"> {{y}}
-                            </label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="decade" class="col-sm-1 control-label">Decade</label>
-                        <div>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="decade" value="1"> I
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="decade" value="2"> II
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="decade" value="3"> III
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="decade" value="4"> IV
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="industry" class="col-sm-1 control-label">Industry</label>
-                        <div>
-                            {% for i in industries %}
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="industry" value="{{i.id}}"> {{i.name}}
-                            </label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="product" class="col-sm-1 control-label">Product</label>
-                        <div>
-                            {% for p in products %}
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="product" value="{{p.id}}" x-data-industry="{{p.industry_id}}"> {{p.name}}
-                            </label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="region" class="col-sm-1 control-label">Region</label>
-                        <div>
-                            {% for r in regions %}
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="region" value="{{r.id}}"> {{r.name}}
-                            </label>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="sales-rep" class="col-sm-1 control-label">Sales Rep:</label>
-                        <div>
-                            {% for s in sales-reps %}
-                            <label class="checkbox-inline">
-                                <input type="checkbox" checked id="sales-rep" value="{{s.id}}"> {{s.name}}
-                            </label>
-                            {% endfor %}
-                        </div>
-                    </div>
+                    <div id="years-selector"></div>
+                    <div id="quarters-selector"></div>
+                    <div id="industries-selector"></div>
+                    <div id="products-selector"></div>
+                    <div id="regions-selector"></div>
+                    <div id="sales-reps-selector"></div>
                 </form>
             </div>
             <div class="row">

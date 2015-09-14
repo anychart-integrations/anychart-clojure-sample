@@ -32,12 +32,53 @@
                   (from :sales_reps)
                   (order-by :name))))
 
-(defn revenue-by-industry [jdbc years quarters regions products sales-reps]
-  (query jdbc (-> (select [:industry.name :industry-name]
-                          [:%summ.sales.total :revenue])
-                  (from :industry :sales :product)
-                  (where [:in :product.id products]
-                         [:in :sales.region_id regions]
-                         [:in :sales.product_id :product.id]
-                         [:in :industry.id :product.industry_id])
-                  (group :industry.id))))
+(defn- dates-filter [sqlmap years quarters]
+  (merge-where sqlmap
+               [:in (sql/call :date_part "year"
+                              (sql/qualify :sales.date))
+                years]
+               [:in (sql/call :date_part "quarter"
+                              (sql/qualify :sales.date))
+                quarters]))
+
+(defn- vectorize [items]
+  (map (fn [item]
+         [(:name item) (:revenue item)])
+       items))
+
+(defn revenue-by-industry [jdbc years quarters products regions industries sales-reps]
+  (vectorize (query jdbc (-> (select [:industry.name :name]
+                                     [:%sum.sales.total :revenue])
+                             (from :industry :sales :product)
+                             (where [:in :industry.id industries]
+                                    [:in :product.id products]
+                                    [:= :sales.product_id :product.id]
+                                    [:= :product.industry_id :industry.id]
+                                    [:in :sales.region_id regions]
+                                    [:in :sales.rep_id sales-reps])
+                             (dates-filter years quarters)
+                             (group :industry.id)))))
+
+(defn revenue-by-sales-reps [jdbc years quarters products regions sales-reps]
+  (vectorize (query jdbc (-> (select [:sales_reps.name :name]
+                                     [:%sum.sales.total :revenue])
+                             (from :sales_reps :sales)
+                             (where [:in :sales_reps.id sales-reps]
+                                    [:= :sales.rep_id :sales_reps.id]
+                                    [:in :sales.region_id regions]
+                                    [:in :sales.product_id products])
+                             (dates-filter years quarters)
+                             (group :sales_reps.id)))))
+
+(defn revenue-by-product [jdbc years quarters products regions sales-reps]
+  (vectorize (query jdbc (-> (select [:product.name :name]
+                                     [:%sum.sales.total :revenue])
+                             (from :product :sales)
+                             (where [:in :product.id products]
+                                    [:= :sales.product_id :product.id]
+                                    [:in :sales.region_id regions]
+                                    [:in :sales.rep_id sales-reps])
+                             (dates-filter years quarters)
+                             (group :product.id)))))
+
+(defn revenue-by-quarter [jdbc years quarters])

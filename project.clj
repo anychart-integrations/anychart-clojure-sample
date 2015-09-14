@@ -1,5 +1,6 @@
 (defproject sample "0.1.0"
   :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [clj-time "0.11.0"]
                  [com.stuartsierra/component "0.2.3"]
                  ;; cljs
