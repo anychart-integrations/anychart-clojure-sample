@@ -47,6 +47,12 @@
                                                             quarters
                                                             products
                                                             regions
+                                                            sales-reps)
+               :revenue-by-quarter (data/revenue-by-quarter (jdbc request)
+                                                            years
+                                                            quarters
+                                                            products
+                                                            regions
                                                             sales-reps)})))
 
 (defroutes app-routes
