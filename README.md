@@ -1,20 +1,26 @@
-# anychart clojure and clojurescript integration sample
+# AnyChart Clojure and Clojurescript Integration Sample
 
-## Project structure
+## Overview
+
+This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [Closurescript](https://github.com/clojure/clojurescript) frontend, [Closure](https://developers.google.com/closure/library/) backend and [Postgresql](http://www.postgresql.org/) Database.
+
+The sample is a basic sales dashboard, with data stored in several tables and shown on a website as several JavaScript bar, line and pie charts, along with ability to filter data and update charts on the fly.
+
+## Project Structure
 * src/templates - selmer templates
-* src/sample - sample clojure code
+* src/sample - clojure sample code
 * src-cljs - clojurescript sources
 * resources/public - static resources
 
-## Requirenments
-* JRE 7+
-* Postgresql 9.3+
-* Leiningen 2+
+## Requirements
+* [JRE 7+](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)
+* [Postgresql 9.3+](http://www.postgresql.org/download/)
+* [Leiningen 2+](http://leiningen.org/)
 
-## Database setup
+## Database Setup
 `psql anychart_sample < dump`
 
-## Database connection config
+## Database Connection Configiration
 Edit base-config in src/sample/core.clj
 
 ## Rebuilding clojurescript
