@@ -8,13 +8,19 @@
             [ring.util.response :refer [response redirect]]
             [sample.data :as data]))
 
-(defn jdbc [request]
+(defn- jdbc
+  "Get jdbc from request"
+  [request]
   (-> request :component :jdbc))
 
-(defn- index-page [request]
-  (render-file "templates/index.selmer" {}))
+(defn- index-page
+  "Index page"
+  [request]
+  (render-file "templates/index.selmer" {:debug (-> request :component :config :debug)}))
 
-(defn- init [request]
+(defn- init
+  "Get initial settings"
+  [request]
   (response {:years (map (fn [y] {:id y :name y}) (data/years (jdbc request)))
              :industries (data/industries (jdbc request))
              :products (data/products (jdbc request))
@@ -22,7 +28,9 @@
              :sales-reps (data/sales-reps (jdbc request))
              :quarters (map (fn [d] {:id d :name d}) (range 1 5))}))
 
-(defn- charts-data [request]
+(defn- charts-data
+  "Get filtered charts data"
+  [request]
   (let [years (-> request :params :years read-string)
         quarters (-> request :params :quarters read-string)
         industries (-> request :params :industries read-string)

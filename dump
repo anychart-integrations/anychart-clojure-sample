@@ -48,7 +48,7 @@ ALTER TABLE industry OWNER TO alex;
 CREATE TABLE product (
     id integer NOT NULL,
     name character varying,
-    insdustry_id integer
+    industry_id integer
 );
 
 
@@ -118,9 +118,6 @@ COPY industry (id, name) FROM stdin;
 2	Finance
 3	Healthcare
 4	Industrial Goods
-5	Services
-6	Technology
-7	Utilities
 \.
 
 
@@ -128,12 +125,12 @@ COPY industry (id, name) FROM stdin;
 -- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: alex
 --
 
-COPY product (id, name, insdustry_id) FROM stdin;
-0	Product 1	\N
-1	Product 2	\N
-2	Product 3	\N
-3	Product 4	\N
-4	Product 5	\N
+COPY product (id, name, industry_id) FROM stdin;
+0	Product 1	0
+1	Product 2	1
+2	Product 3	2
+3	Product 4	2
+4	Product 5	3
 \.
 
 
@@ -6419,11 +6416,11 @@ ALTER TABLE ONLY sales_reps
 
 
 --
--- Name: product_insdustry_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
+-- Name: product_industry_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
 --
 
 ALTER TABLE ONLY product
-    ADD CONSTRAINT product_insdustry_id_fkey FOREIGN KEY (insdustry_id) REFERENCES industry(id);
+    ADD CONSTRAINT product_industry_id_fkey FOREIGN KEY (industry_id) REFERENCES industry(id);
 
 
 --

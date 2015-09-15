@@ -2,8 +2,11 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="http://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+        {% if debug %}
         <script src="/js/main.js"></script>
+        {% else %}
+        <script src="/js/main.min.js"></script>
+        {% endif %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <style type="text/css">
          .chart { height: 400px; }

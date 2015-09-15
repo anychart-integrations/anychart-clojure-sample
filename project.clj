@@ -20,8 +20,21 @@
                  [clojure.jdbc/clojure.jdbc-c3p0 "0.3.2"]
                  [honeysql "0.6.1"]]
   :plugins [[lein-cljsbuild "1.1.0"]]
+  :main sample.core
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src-cljs"]
                         :compiler {:output-to "resources/public/js/main.js"
                                    :optimizations :whitespace
-                                   :pretty-print true}}]})
+                                   :foreign-libs
+                                   [{:file "http://cdn.anychart.com/js/latest/anychart.min.js"
+                                     :provides ["anychart"]}]
+                                   :pretty-print true}}
+                       {:id "prod"
+                        :source-paths ["src-cljs"]
+                        :compiler {:output-to "resources/public/js/main.min.js"
+                                   :optimizations :advanced
+                                   :externs ["src-cljs/externs.js"]
+                                   :foreign-libs
+                                   [{:file "http://cdn.anychart.com/js/latest/anychart.min.js"
+                                     :provides ["anychart"]}]
+                                   :pretty-print false}}]})

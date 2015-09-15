@@ -1,10 +1,11 @@
 (ns sample.data
   (:require [honeysql.helpers :refer :all]
             [honeysql.core :as sql]
-            [sample.components.jdbc :refer [query]])
-  (:import com.mchange.v2.c3p0.ComboPooledDataSource))
+            [sample.components.jdbc :refer [query]]))
 
-(defn years [jdbc]
+(defn years
+  "Select all years from database"
+  [jdbc]
   (map #(-> % :year int)
        (query jdbc (-> (select [(sql/call :extract (sql/raw "YEAR FROM sales.date"))
                                 :year])
@@ -12,30 +13,42 @@
                        (group :year)
                        (order-by [:year :desc])))))
 
-(defn industries [jdbc]
+(defn industries
+  "Select all industiries from database"
+  [jdbc]
   (query jdbc (-> (select :id :name)
                   (from :industry)
                   (order-by :name))))
 
-(defn regions [jdbc]
+(defn regions
+  "Select all regions from database"
+  [jdbc]
   (query jdbc (-> (select :id :name)
                   (from :region)
                   (order-by :name))))
 
-(defn products [jdbc]
+(defn products
+  "Select all products from database"
+  [jdbc]
   (query jdbc (-> (select :id :name :industry_id)
                   (from :product)
                   (order-by :name))))
 
-(defn sales-reps [jdbc]
+(defn sales-reps
+  "Select all sales reps from database"
+  [jdbc]
   (query jdbc (-> (select :id :name)
                   (from :sales_reps)
                   (order-by :name))))
 
-(defn- vectorize [items]
+(defn- vectorize
+  "Vectorize query rows for AnyChart"
+  [items]
   (map vals items))
 
-(defn revenue-by-industry [jdbc years quarters products regions industries sales-reps]
+(defn revenue-by-industry
+  "Select revenue grouped by industry"
+  [jdbc years quarters products regions industries sales-reps]
   (vectorize (query jdbc (-> (select [:industry.name :name]
                                      [:%sum.sales.total :revenue])
                              (from :industry :sales :product)
@@ -52,7 +65,9 @@
                              (group :industry.id)
                              (order-by (sql/raw "1"))))))
 
-(defn revenue-by-sales-reps [jdbc years quarters products regions sales-reps]
+(defn revenue-by-sales-reps
+  "Select revenue grouped by sales reps"
+  [jdbc years quarters products regions sales-reps]
   (vectorize (query jdbc (-> (select [:sales_reps.name :name]
                                      [:%sum.sales.total :revenue])
                              (from :sales_reps :sales)
@@ -67,7 +82,9 @@
                              (group :sales_reps.id)
                              (order-by (sql/raw "1"))))))
 
-(defn revenue-by-product [jdbc years quarters products regions sales-reps]
+(defn revenue-by-product
+  "Select revenue grouped by products"
+  [jdbc years quarters products regions sales-reps]
   (vectorize (query jdbc (-> (select [:product.name :name]
                                      [:%sum.sales.total :revenue])
                              (from :product :sales)
@@ -79,11 +96,12 @@
                                      years]
                                     [:in (sql/call :date_part "quarter" :sales.date)
                                      quarters])
-                             (dates-filter years quarters)
                              (group :product.id)
                              (order-by (sql/raw "1"))))))
 
-(defn revenue-by-quarter [jdbc years quarters products regions sales-reps]
+(defn revenue-by-quarter
+  "Select revenue grouped by quarter"
+  [jdbc years quarters products regions sales-reps]
   (let [sel (reduce (fn [res quarter]
                       (merge-select
                        res

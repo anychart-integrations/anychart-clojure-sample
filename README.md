@@ -1,14 +1,27 @@
-# sample
+# anychart clojure and clojurescript integration sample
 
-A Clojure library designed to ... well, that part is up to you.
+## Project structure
+* src/templates - selmer templates
+* src/sample - sample clojure code
+* src-cljs - clojurescript sources
+* resources/public - static resources
 
-## Usage
+## Requirenments
+* JRE 7+
+* Postgresql 9.3+
+* Leiningen 2+
 
-FIXME
+## Database setup
+`psql anychart_sample < dump`
 
-## License
+## Database connection config
+Edit base-config in src/sample/core.clj
 
-Copyright © 2015 FIXME
+## Rebuilding clojurescript
+`lein cljsbuild once prod` for production, `lein cljsbuild once dev` for development.
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+## Running locally
+After `lein run` project will be available at http://localhost:9197
+
+## Deploying
+You can use uberjar for deploy: `lein uberjar`

@@ -5,7 +5,9 @@
             [taoensso.timbre :as timbre :refer [info]]
             [sample.web.routes :as routes :refer [app]]))
 
-(defn- component-middleware [component app]
+(defn- component-middleware
+  "Middleware for adding component to request"
+  [component app]
   (fn [request]
     (app (assoc request :component component))))
 

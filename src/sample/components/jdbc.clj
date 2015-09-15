@@ -51,15 +51,22 @@
 (defn new-jdbc [config]
   (map->JDBC {:config config}))
 
-(defn sql [q]
-  (println (sql/format q :quoting :ansi))
+(defn sql
+  "Convert honeysql to JDBC query"
+  [q]
   (sql/format q :quoting :ansi))
 
-(defn query [jdbc q]
+(defn query
+  "Run query and return result rows"
+  [jdbc q]
   (clj-jdbc/query (:conn jdbc) (sql q)))
 
-(defn one [jdbc q]
+(defn one
+  "Run query and return first row"
+  [jdbc q]
   (first (query jdbc q)))
 
-(defn exec [jdbc q]
+(defn exec
+  "Run insert/update query"
+  [jdbc q]
   (clj-jdbc/execute! (:conn jdbc) (sql q)))
