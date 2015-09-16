@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [Closurescript](https://github.com/clojure/clojurescript) frontend, [Closure](https://developers.google.com/closure/library/) backend and [Postgresql](http://www.postgresql.org/) Database.
+This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [Cloоurescript](https://github.com/clojure/clojurescript) frontend, [Clojure](http://clojure.org/) backend and [Postgresql](http://www.postgresql.org/) Database.
 
 The sample is a basic sales dashboard, with data stored in several tables and shown on a website as several JavaScript bar, line and pie charts, along with ability to filter data and update charts on the fly.
 
