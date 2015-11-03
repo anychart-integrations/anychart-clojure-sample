@@ -4,7 +4,7 @@
 (def ^:private revenue-by-industry (anychart.data.set))
 (def ^:private revenue-by-sales (anychart.data.set))
 (def ^:private revenue-by-product (anychart.data.set))
-(def ^:private revenue-by-quarter (anychart.data.set))
+(def ^:private revenue-by-quarter (atom nil))
 
 (defn create
   "Setup all charts"
@@ -26,7 +26,8 @@
     (.title "Revenue by product")
     (.draw))
 
-  (doto (anychart.line revenue-by-quarter)
+  (reset! revenue-by-quarter (anychart.line))
+  (doto @revenue-by-quarter
     (.container "rev-by-quarter")
     (.title "Revenue by quarter")
     (.draw)))
@@ -37,4 +38,7 @@
   (.data revenue-by-industry (clj->js (data :revenue-by-industry)))
   (.data revenue-by-sales (clj->js (data :revenue-by-sales-reps)))
   (.data revenue-by-product (clj->js (data :revenue-by-product)))
-  (.data revenue-by-quarter (clj->js (data :revenue-by-quarter))))
+  (.removeAllSeries @revenue-by-quarter)
+  (.apply (.-addSeries @revenue-by-quarter)
+          @revenue-by-quarter
+          (anychart.data.mapAsTable (clj->js (data :revenue-by-quarter)))))

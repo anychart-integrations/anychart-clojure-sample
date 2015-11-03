@@ -1,6 +1,7 @@
 var anychart = {};
 anychart.theme = {defaultTooltip: {title: {enabled: false}}};
 anychart.data = {};
+anychart.data.mapAsTable = function() {};
 
 anychart.data.Set = function() {};
 anychart.data.Set.prototype.data = function() {};
@@ -12,6 +13,8 @@ anychart.SimpleChart = function() {};
 anychart.SimpleChart.prototype.container = function() {};
 anychart.SimpleChart.prototype.title = function() {};
 anychart.SimpleChart.prototype.draw = function() {};
+anychart.SimpleChart.prototype.addSeries = function() {};
+anychart.SimpleChart.prototype.removeAllSeries = function() {};
 
 /** @return {anychart.SimpleChart} */
 anychart.bar = function() {};
