@@ -5,11 +5,13 @@
             [goog.structs :as gstruct]
             [clojure.string])
   (:require-macros
-   [cljs.core.async.macros :refer [go]]))
+    [cljs.core.async.macros :refer [go]]))
+
 
 (defn is-selected [item]
   (or (not (contains? item :selected))
       (:selected item)))
+
 
 (defn- to-query-param [items]
   (str "("
@@ -18,17 +20,19 @@
                                  (filter is-selected items)))
        ")"))
 
+
 (defn query-string [state]
-  (-> {:years (to-query-param (:years state))
-       :quarters (to-query-param (:quarters state))
-       :products (to-query-param (:products state))
-       :regions (to-query-param (:regions state))
+  (-> {:years      (to-query-param (:years state))
+       :quarters   (to-query-param (:quarters state))
+       :products   (to-query-param (:products state))
+       :regions    (to-query-param (:regions state))
        :industries (to-query-param (:industries state))
        :sales-reps (to-query-param (:sales-reps state))}
       clj->js
       gstruct/Map.
       gquery-data/createFromMap
       .toString))
+
 
 (defn GET [url]
   (let [ch (chan 1)]

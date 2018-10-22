@@ -21,20 +21,20 @@
                  [honeysql "0.6.1"]]
   :plugins [[lein-cljsbuild "1.1.0"]]
   :main sample.core
-  :cljsbuild {:builds [{:id "dev"
+  :cljsbuild {:builds [{:id           "dev"
                         :source-paths ["src-cljs"]
-                        :compiler {:output-to "resources/public/js/main.js"
-                                   :optimizations :whitespace
-                                   :foreign-libs
-                                   [{:file "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
-                                     :provides ["anychart"]}]
-                                   :pretty-print true}}
-                       {:id "prod"
+                        :compiler     {:output-to     "resources/public/js/main.js"
+                                       :optimizations :whitespace
+                                       :foreign-libs
+                                                      [{:file     "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
+                                                        :provides ["anychart"]}]
+                                       :pretty-print  true}}
+                       {:id           "prod"
                         :source-paths ["src-cljs"]
-                        :compiler {:output-to "resources/public/js/main.min.js"
-                                   :optimizations :advanced
-                                   :externs ["src-cljs/externs.js"]
-                                   :foreign-libs
-                                   [{:file "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
-                                     :provides ["anychart"]}]
-                                   :pretty-print false}}]})
+                        :compiler     {:output-to     "resources/public/js/main.min.js"
+                                       :optimizations :advanced
+                                       :externs       ["src-cljs/externs.js"]
+                                       :foreign-libs
+                                                      [{:file     "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
+                                                        :provides ["anychart"]}]
+                                       :pretty-print  false}}]})

@@ -5,14 +5,17 @@
             [taoensso.timbre :as timbre :refer [info]]
             [sample.web.routes :as routes :refer [app]]))
 
+
 (defn- component-middleware
   "Middleware for adding component to request"
   [component app]
   (fn [request]
     (app (assoc request :component component))))
 
+
 (defn- create-web-app [component]
   (component-middleware component #'app))
+
 
 (defrecord Web [config web-server jdbc redis api]
   component/Lifecycle
@@ -24,6 +27,7 @@
     (if web-server
       (web-server :timeout 100))
     (assoc this :web-server nil)))
+
 
 (defn new-web [config]
   (map->Web {:config config}))

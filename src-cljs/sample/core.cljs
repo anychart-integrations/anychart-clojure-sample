@@ -5,12 +5,14 @@
             [reagent.core :as r]
             [cljs.core.async :as async :refer [chan]])
   (:require-macros
-   [cljs.core.async.macros :refer [go]]))
+    [cljs.core.async.macros :refer [go]]))
+
 
 (def state (r/atom {}))
 
+
 (defn ^:export init []
-  
+
   (go
     (let [res (<! (data/GET "/init"))]
       (reset! state res)
@@ -20,6 +22,6 @@
     (ui/create state update)
     (go (while true
           (charts/update-charts
-           (<! (data/GET (str "/data?" (data/query-string @(<! update)))))))))
-  
+            (<! (data/GET (str "/data?" (data/query-string @(<! update)))))))))
+
   (charts/create))

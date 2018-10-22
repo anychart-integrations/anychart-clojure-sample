@@ -1,16 +1,18 @@
 (ns sample.charts
   (:require [anychart]))
 
+
 (def ^:private revenue-by-industry (anychart.data.set))
 (def ^:private revenue-by-sales (anychart.data.set))
 (def ^:private revenue-by-product (anychart.data.set))
 (def ^:private revenue-by-quarter (atom nil))
 
+
 (defn create
   "Setup all charts"
   []
   (js/anychart.theme (clj->js {:defaultTooltip {:title {:enabled false}}}))
-  
+
   (doto (anychart.bar revenue-by-industry)
     (.container "rev-by-industry")
     (.title "Revenue by industry")
@@ -31,6 +33,7 @@
     (.container "rev-by-quarter")
     (.title "Revenue by quarter")
     (.draw)))
+
 
 (defn update-charts
   "Replace charts data"

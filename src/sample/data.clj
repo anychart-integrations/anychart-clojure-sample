@@ -3,6 +3,7 @@
             [honeysql.core :as sql]
             [sample.components.jdbc :refer [query]]))
 
+
 (defn years
   "Select all years from database"
   [jdbc]
@@ -13,12 +14,14 @@
                        (group :year)
                        (order-by [:year :desc])))))
 
+
 (defn industries
   "Select all industiries from database"
   [jdbc]
   (query jdbc (-> (select :id :name)
                   (from :industry)
                   (order-by :name))))
+
 
 (defn regions
   "Select all regions from database"
@@ -27,12 +30,14 @@
                   (from :region)
                   (order-by :name))))
 
+
 (defn products
   "Select all products from database"
   [jdbc]
   (query jdbc (-> (select :id :name :industry_id)
                   (from :product)
                   (order-by :name))))
+
 
 (defn sales-reps
   "Select all sales reps from database"
@@ -41,10 +46,12 @@
                   (from :sales_reps)
                   (order-by :name))))
 
+
 (defn- vectorize
   "Vectorize query rows for AnyChart"
   [items]
   (map vals items))
+
 
 (defn revenue-by-industry
   "Select revenue grouped by industry"
@@ -67,6 +74,7 @@
                                (group :industry.id)
                                (order-by (sql/raw "1")))))))
 
+
 (defn revenue-by-sales-reps
   "Select revenue grouped by sales reps"
   [jdbc years quarters products regions sales-reps]
@@ -85,6 +93,7 @@
                                        quarters])
                                (group :sales_reps.id)
                                (order-by (sql/raw "1")))))))
+
 
 (defn revenue-by-product
   "Select revenue grouped by products"
@@ -105,6 +114,7 @@
                                (group :product.id)
                                (order-by (sql/raw "1")))))))
 
+
 (defn revenue-by-quarter
   "Select revenue grouped by quarter"
   [jdbc years quarters products regions sales-reps]
@@ -112,8 +122,8 @@
            (seq products) (seq years) (seq quarters))
     (let [sel (reduce (fn [res quarter]
                         (merge-select
-                         res
-                         [(sql/raw (str "SUM(total) FILTER (WHERE date_part('quarter', \"date\") = " (int quarter) ")")) (str quarter)]))
+                          res
+                          [(sql/raw (str "SUM(total) FILTER (WHERE date_part('quarter', \"date\") = " (int quarter) ")")) (str quarter)]))
                       (select [(sql/call :date_part "year" :sales.date) :year])
                       quarters)]
       (map vals (query jdbc (-> sel
