@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Sales Dashboard - AnyChart/Closure/Closurescript/Postgresql</title>
+        <title>Sales Dashboard - AnyChart/Clojure/ClojureScript/PostgreSQL</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% if debug %}
         <script src="/js/main.js"></script>

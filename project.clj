@@ -26,7 +26,7 @@
                         :compiler {:output-to "resources/public/js/main.js"
                                    :optimizations :whitespace
                                    :foreign-libs
-                                   [{:file "http://cdn.anychart.com/js/latest/anychart.min.js"
+                                   [{:file "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
                                      :provides ["anychart"]}]
                                    :pretty-print true}}
                        {:id "prod"
@@ -35,6 +35,6 @@
                                    :optimizations :advanced
                                    :externs ["src-cljs/externs.js"]
                                    :foreign-libs
-                                   [{:file "http://cdn.anychart.com/js/latest/anychart.min.js"
+                                   [{:file "https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"
                                      :provides ["anychart"]}]
                                    :pretty-print false}}]})
