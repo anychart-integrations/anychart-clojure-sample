@@ -1,10 +1,10 @@
 [<img src="https://cdn.anychart.com/images/logo-transparent-segoe.png?2" width="234px" alt="AnyChart - Robust JavaScript/HTML5 Chart library for any project">](https://anychart.com)
-# AnyChart Clojure and Clojurescript Integration Sample
+# AnyChart Clojure and ClojureScript Integration Sample
 The sample is a basic sales dashboard, with data stored in several tables and shown on a website as several JavaScript bar, line and pie charts, along with ability to filter data and update charts on the fly.
 
 ## Overview
 
-This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [Clojurescript](https://github.com/clojure/clojurescript) frontend, [Clojure](http://clojure.org/) backend and [Postgresql](http://www.postgresql.org/) Database.
+This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [ClojureScript](https://github.com/clojure/clojurescript) frontend, [Clojure](http://clojure.org/) backend and [Postgresql](http://www.postgresql.org/) Database.
 
 ## Project Structure
 * src/templates - selmer templates
@@ -38,7 +38,7 @@ psql anychart_sample < dump
 ## Database Connection Configiration
 Edit base-config in src/sample/core.clj
 
-## Rebuilding clojurescript
+## Rebuilding ClojureScript
 `lein cljsbuild once prod` for production, `lein cljsbuild once dev` for development.
 
 ## Running locally
@@ -46,3 +46,12 @@ After `lein run` project will be available at http://localhost:9197
 
 ## Deploying
 You can use uberjar for deploy: `lein uberjar`
+
+## Further Learning
+* [Documentation](https://docs.anychart.com)
+* [JavaScript API Reference](https://api.anychart.com)
+* [Code Playground](https://playground.anychart.com)
+* [Technical Support](https://anychart.com/support)
+
+## License
+[© AnyChart.com - JavaScript charts](http://www.anychart.com). Released under the [Apache 2.0 License](https://github.com/anychart-integrations/anychart-clojure-sample/blob/master/LICENSE).
