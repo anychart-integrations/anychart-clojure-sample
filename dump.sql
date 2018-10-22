@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: industry; Type: TABLE; Schema: public; Owner: alex; Tablespace: 
+-- Name: industry; Type: TABLE; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 CREATE TABLE industry (
@@ -39,10 +39,10 @@ CREATE TABLE industry (
 );
 
 
-ALTER TABLE industry OWNER TO alex;
+ALTER TABLE industry OWNER TO anychart_user;
 
 --
--- Name: product; Type: TABLE; Schema: public; Owner: alex; Tablespace: 
+-- Name: product; Type: TABLE; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 CREATE TABLE product (
@@ -52,10 +52,10 @@ CREATE TABLE product (
 );
 
 
-ALTER TABLE product OWNER TO alex;
+ALTER TABLE product OWNER TO anychart_user;
 
 --
--- Name: region; Type: TABLE; Schema: public; Owner: alex; Tablespace: 
+-- Name: region; Type: TABLE; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 CREATE TABLE region (
@@ -64,10 +64,10 @@ CREATE TABLE region (
 );
 
 
-ALTER TABLE region OWNER TO alex;
+ALTER TABLE region OWNER TO anychart_user;
 
 --
--- Name: sales_id_seq; Type: SEQUENCE; Schema: public; Owner: alex
+-- Name: sales_id_seq; Type: SEQUENCE; Schema: public; Owner: anychart_user
 --
 
 CREATE SEQUENCE sales_id_seq
@@ -78,10 +78,10 @@ CREATE SEQUENCE sales_id_seq
     CACHE 1;
 
 
-ALTER TABLE sales_id_seq OWNER TO alex;
+ALTER TABLE sales_id_seq OWNER TO anychart_user;
 
 --
--- Name: sales; Type: TABLE; Schema: public; Owner: alex; Tablespace: 
+-- Name: sales; Type: TABLE; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 CREATE TABLE sales (
@@ -94,10 +94,10 @@ CREATE TABLE sales (
 );
 
 
-ALTER TABLE sales OWNER TO alex;
+ALTER TABLE sales OWNER TO anychart_user;
 
 --
--- Name: sales_reps; Type: TABLE; Schema: public; Owner: alex; Tablespace: 
+-- Name: sales_reps; Type: TABLE; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 CREATE TABLE sales_reps (
@@ -106,10 +106,10 @@ CREATE TABLE sales_reps (
 );
 
 
-ALTER TABLE sales_reps OWNER TO alex;
+ALTER TABLE sales_reps OWNER TO anychart_user;
 
 --
--- Data for Name: industry; Type: TABLE DATA; Schema: public; Owner: alex
+-- Data for Name: industry; Type: TABLE DATA; Schema: public; Owner: anychart_user
 --
 
 COPY industry (id, name) FROM stdin;
@@ -122,7 +122,7 @@ COPY industry (id, name) FROM stdin;
 
 
 --
--- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: alex
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: anychart_user
 --
 
 COPY product (id, name, industry_id) FROM stdin;
@@ -135,7 +135,7 @@ COPY product (id, name, industry_id) FROM stdin;
 
 
 --
--- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: alex
+-- Data for Name: region; Type: TABLE DATA; Schema: public; Owner: anychart_user
 --
 
 COPY region (id, name) FROM stdin;
@@ -148,7 +148,7 @@ COPY region (id, name) FROM stdin;
 
 
 --
--- Data for Name: sales; Type: TABLE DATA; Schema: public; Owner: alex
+-- Data for Name: sales; Type: TABLE DATA; Schema: public; Owner: anychart_user
 --
 
 COPY sales (id, date, product_id, region_id, rep_id, total) FROM stdin;
@@ -6356,14 +6356,14 @@ COPY sales (id, date, product_id, region_id, rep_id, total) FROM stdin;
 
 
 --
--- Name: sales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: alex
+-- Name: sales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: anychart_user
 --
 
 SELECT pg_catalog.setval('sales_id_seq', 7635, true);
 
 
 --
--- Data for Name: sales_reps; Type: TABLE DATA; Schema: public; Owner: alex
+-- Data for Name: sales_reps; Type: TABLE DATA; Schema: public; Owner: anychart_user
 --
 
 COPY sales_reps (id, name) FROM stdin;
@@ -6376,7 +6376,7 @@ COPY sales_reps (id, name) FROM stdin;
 
 
 --
--- Name: industry_pkey; Type: CONSTRAINT; Schema: public; Owner: alex; Tablespace: 
+-- Name: industry_pkey; Type: CONSTRAINT; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 ALTER TABLE ONLY industry
@@ -6384,7 +6384,7 @@ ALTER TABLE ONLY industry
 
 
 --
--- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: alex; Tablespace: 
+-- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 ALTER TABLE ONLY product
@@ -6392,7 +6392,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: alex; Tablespace: 
+-- Name: region_pkey; Type: CONSTRAINT; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 ALTER TABLE ONLY region
@@ -6400,7 +6400,7 @@ ALTER TABLE ONLY region
 
 
 --
--- Name: sales_pkey; Type: CONSTRAINT; Schema: public; Owner: alex; Tablespace: 
+-- Name: sales_pkey; Type: CONSTRAINT; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 ALTER TABLE ONLY sales
@@ -6408,7 +6408,7 @@ ALTER TABLE ONLY sales
 
 
 --
--- Name: sales_reps_pkey; Type: CONSTRAINT; Schema: public; Owner: alex; Tablespace: 
+-- Name: sales_reps_pkey; Type: CONSTRAINT; Schema: public; Owner: anychart_user; Tablespace: 
 --
 
 ALTER TABLE ONLY sales_reps
@@ -6416,7 +6416,7 @@ ALTER TABLE ONLY sales_reps
 
 
 --
--- Name: product_industry_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
+-- Name: product_industry_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: anychart_user
 --
 
 ALTER TABLE ONLY product
@@ -6424,7 +6424,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: sales_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
+-- Name: sales_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: anychart_user
 --
 
 ALTER TABLE ONLY sales
@@ -6432,7 +6432,7 @@ ALTER TABLE ONLY sales
 
 
 --
--- Name: sales_region_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
+-- Name: sales_region_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: anychart_user
 --
 
 ALTER TABLE ONLY sales
@@ -6440,7 +6440,7 @@ ALTER TABLE ONLY sales
 
 
 --
--- Name: sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: alex
+-- Name: sales_rep_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: anychart_user
 --
 
 ALTER TABLE ONLY sales
@@ -6448,12 +6448,12 @@ ALTER TABLE ONLY sales
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: alex
+-- Name: public; Type: ACL; Schema: -; Owner: anychart_user
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM alex;
-GRANT ALL ON SCHEMA public TO alex;
+REVOKE ALL ON SCHEMA public FROM anychart_user;
+GRANT ALL ON SCHEMA public TO anychart_user;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 

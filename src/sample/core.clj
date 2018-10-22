@@ -8,8 +8,8 @@
                   :jdbc {:subprotocol "postgresql"
                          :subname "//localhost:5432/anychart_sample"
                          :classname "org.postgresql.Driver"
-                         :user "alex"
-                         :password ""}})
+                         :user "anychart_user"
+                         :password "anychart_pass"}})
 
 (def prod-config (assoc-in base-config [:web :debug] false))
 

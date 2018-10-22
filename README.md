@@ -18,7 +18,22 @@ This sample shows a sample dashboard done with [AnyChart JavaScript Charting Fra
 * [Leiningen 2+](http://leiningen.org/)
 
 ## Database Setup
-`psql anychart_sample < dump`
+```
+# login to PostgreSQL
+sudo -u postgres psql
+
+# CREATE user and database
+CREATE USER anychart_user WITH PASSWORD 'anychart_pass';
+CREATE DATABASE anychart_sample;
+GRANT ALL PRIVILEGES ON DATABASE anychart_sample TO anychart_user;
+
+# exit psql
+\q
+
+# run dump
+psql anychart_sample < dump
+```
+
 
 ## Database Connection Configiration
 Edit base-config in src/sample/core.clj
