@@ -6,16 +6,11 @@ The sample is a basic sales dashboard, with data stored in several tables and sh
 
 This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [ClojureScript](https://github.com/clojure/clojurescript) frontend, [Clojure](http://clojure.org/) backend and [Postgresql](http://www.postgresql.org/) Database.
 
-## Project Structure
-* src/templates - selmer templates
-* src/sample - clojure sample code
-* src-cljs - clojurescript sources
-* resources/public - static resources
-
 ## Requirements
 * [JRE 7+](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)
 * [Postgresql 9.3+](http://www.postgresql.org/download/)
 * [Leiningen 2+](http://leiningen.org/)
+
 
 ## Database Setup
 ```
@@ -46,6 +41,48 @@ After `lein run` project will be available at http://localhost:9197
 
 ## Deploying
 You can use uberjar for deploy: `lein uberjar`
+
+
+## Project Structure
+```
+anychart-clojure-sample/
+    resources/
+        public/
+            js/
+                main.js             # generated JS code
+                main.min.js         # optimized generated JS code
+    src/                            # Backend Clojure code
+        sample/
+            db/
+                core.clj            # DB component
+                data.clj            # DB data functions
+            web/
+                core.clj            # Web component
+                routes.clj          # Compojure routes and handlers
+            core.clj
+        templates/
+            index.selmer            # HTML template
+    src-cljs/                       # Frontend ClojureScript code
+        sample/
+            charts.cljs             # AnyChart charts creation      
+            core.cljs               # Initalization
+            data.cljs               # Function for work with data
+            ui.cljs                 # Top control panel
+        exnters.js
+    dump.sql                        # PostgreSQL dump
+    project.clj                     # Main project settings
+
+```
+
+
+## Technologies
+Language - [Clojure](https://clojure.org) / [ClojureScript](https://clojurescript.org/)<br />
+Build tool - [Leiningen](https://leiningen.org/)<br />
+Database - [PostgreSQL](http://www.postgresql.org/)<br />
+HTTP server - [HTTP Kit](http://www.http-kit.org/)<br />
+Template Engine - [Selmer](https://github.com/yogthos/Selmer)<br />
+UI library - [Reagent](https://reagent-project.github.io/)
+
 
 ## Further Learning
 * [Documentation](https://docs.anychart.com)
