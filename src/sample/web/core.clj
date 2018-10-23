@@ -1,4 +1,4 @@
-(ns sample.components.web
+(ns sample.web.core
   (:require [com.stuartsierra.component :as component]
             [org.httpkit.server :as server]
             [ring.middleware.json :refer [wrap-json-response wrap-json-body]]

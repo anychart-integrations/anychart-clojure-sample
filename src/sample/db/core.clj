@@ -1,4 +1,4 @@
-(ns sample.components.jdbc
+(ns sample.db.core
   (:require [clojure.java.jdbc :as clj-jdbc]
             [com.stuartsierra.component :as component]
             [honeysql.core :as sql]

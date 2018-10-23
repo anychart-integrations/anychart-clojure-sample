@@ -6,7 +6,7 @@
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [ring.middleware.json :refer [wrap-json-response]]
             [ring.util.response :refer [response redirect]]
-            [sample.data :as data]))
+            [sample.db.data :as data]))
 
 
 (defn- jdbc

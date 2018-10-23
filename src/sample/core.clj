@@ -1,6 +1,6 @@
 (ns sample.core
-  (:require [sample.components.jdbc :as jdbc]
-            [sample.components.web :as web]
+  (:require [sample.db.core :as db]
+            [sample.web.core :as web]
             [com.stuartsierra.component :as component])
   (:gen-class :main :true))
 
@@ -20,7 +20,7 @@
   "App system with jdbc and http-kit web server"
   [config]
   (component/system-map
-    :jdbc (jdbc/new-jdbc (:jdbc config))
+    :jdbc (db/new-jdbc (:jdbc config))
     :web (component/using (web/new-web (:web config)) [:jdbc])))
 
 

@@ -3,7 +3,7 @@
             [goog.net.XhrIo :as xhr]
             [goog.Uri.QueryData :as gquery-data]
             [goog.structs :as gstruct]
-            [clojure.string])
+            [clojure.string :as string])
   (:require-macros
     [cljs.core.async.macros :refer [go]]))
 
@@ -15,9 +15,9 @@
 
 (defn- to-query-param [items]
   (str "("
-       (clojure.string/join ","
-                            (map :id
-                                 (filter is-selected items)))
+       (string/join ","
+                    (map :id
+                         (filter is-selected items)))
        ")"))
 
 

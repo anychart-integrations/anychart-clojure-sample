@@ -1,7 +1,7 @@
-(ns sample.data
-  (:require [honeysql.helpers :refer :all]
-            [honeysql.core :as sql]
-            [sample.components.jdbc :refer [query]]))
+(ns sample.db.data
+  (:require [sample.db.core :refer [query]]
+            [honeysql.helpers :refer :all]
+            [honeysql.core :as sql]))
 
 
 (defn years
