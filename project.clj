@@ -1,25 +1,29 @@
 (defproject sample "0.1.0"
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
-                 [clj-time "0.11.0"]
-                 [com.stuartsierra/component "0.2.3"]
+  :description "AnyChart Clojure/ClojureScript/PostgreSQL sample"
+  :url "https://github.com/anychart-integrations/anychart-clojure-sample"
+  :license {:name "Apache License"
+            :url  "http://www.apache.org/licenses/LICENSE-2.0"}
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/core.async "0.4.474"]
+                 [clj-time "0.15.0"]
+                 [com.stuartsierra/component "0.3.2"]
                  ;; cljs
-                 [org.clojure/clojurescript "1.7.48"]
-                 [reagent "0.5.1-rc3"]
+                 [org.clojure/clojurescript "1.10.339"]
+                 [reagent "0.8.1"]
                  ;; web
-                 [compojure "1.3.3"]
-                 [ring/ring-json "0.3.1"]
-                 [http-kit "2.1.18"]
+                 [compojure "1.6.1"]
+                 [ring/ring-json "0.4.0"]
+                 [http-kit "2.3.0"]
                  ;; templates
-                 [selmer "0.8.2"]
+                 [selmer "1.12.2"]
                  ;; logging
-                 [com.taoensso/timbre "4.0.1"]
+                 [com.taoensso/timbre "4.10.0"]
                  ;; db
-                 [org.clojure/java.jdbc "0.3.6"]
-                 [postgresql/postgresql "8.4-702.jdbc4"]
-                 [clojure.jdbc/clojure.jdbc-c3p0 "0.3.2"]
-                 [honeysql "0.6.1"]]
-  :plugins [[lein-cljsbuild "1.1.0"]
+                 [org.clojure/java.jdbc "0.7.8"]
+                 [postgresql/postgresql "9.3-1102.jdbc41"]
+                 [clojure.jdbc/clojure.jdbc-c3p0 "0.3.3"]
+                 [honeysql "0.9.4"]]
+  :plugins [[lein-cljsbuild "1.1.5"]
             [lein-ancient "0.6.15"]]
   :main sample.core
   :cljsbuild {:builds [{:id           "dev"

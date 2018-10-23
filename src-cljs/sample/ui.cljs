@@ -26,8 +26,8 @@
                                            :on-change (fn []
                                                         (swap! state assoc key
                                                                (toggle-item (get @state key) item))
-                                                        (put! update-chan state))}
-                                   (:name item)]]))]])
+                                                        (put! update-chan state))}]
+                                  (:name item)]))]])
   ([label state key update-chan]
    (group-selector label state key (constantly false) update-chan)))
 

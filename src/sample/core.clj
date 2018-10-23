@@ -2,7 +2,7 @@
   (:require [sample.db.core :as db]
             [sample.web.core :as web]
             [com.stuartsierra.component :as component])
-  (:gen-class :main :true))
+  (:gen-class))
 
 
 (def base-config {:web  {:port 9197
