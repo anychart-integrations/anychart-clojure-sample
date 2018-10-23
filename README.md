@@ -30,17 +30,26 @@ psql anychart_sample < dump
 ```
 
 
-## Database Connection Configiration
-Edit base-config in src/sample/core.clj
-
 ## Rebuilding ClojureScript
-`lein cljsbuild once prod` for production, `lein cljsbuild once dev` for development.
+```bash
+lein cljsbuild once prod        # for production
+lein cljsbuild once dev         # for development
+```
+
 
 ## Running locally
-After `lein run` project will be available at http://localhost:9197
+```bash
+lein run
+```
+After that project will be available at [http://localhost:9197](http://localhost:9197)
+
 
 ## Deploying
-You can use uberjar for deploy: `lein uberjar`
+You can use uberjar for deploy:
+```bash
+lein uberjar
+```
+Stanadalone JAR file will appear in `target` folder.
 
 
 ## Project Structure
