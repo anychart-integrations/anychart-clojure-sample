@@ -4,7 +4,9 @@ The sample is a basic sales dashboard, with data stored in several tables and sh
 
 ## Overview
 
-This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/) and, [ClojureScript](https://github.com/clojure/clojurescript) frontend, [Clojure](http://clojure.org/) backend and [Postgresql](http://www.postgresql.org/) Database.
+This sample shows a sample dashboard done with [AnyChart JavaScript Charting Framework](http://www.anychart.com/),
+[Clojure](http://clojure.org/) backend, [ClojureScript](https://github.com/clojure/clojurescript) frontend
+and [PostgreSQL](http://www.postgresql.org/) database.
 
 ## Requirements
 * [JRE 7+](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)
