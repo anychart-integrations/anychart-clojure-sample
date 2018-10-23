@@ -29,7 +29,7 @@
                                                         (put! update-chan state))}
                                    (:name item)]]))]])
   ([label state key update-chan]
-   (group-selector label state key (fn [_] false) update-chan)))
+   (group-selector label state key (constantly false) update-chan)))
 
 
 (defn- years-selector [state update-chan]

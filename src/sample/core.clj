@@ -5,7 +5,8 @@
   (:gen-class :main :true))
 
 
-(def base-config {:web  {:port 9197 :debug true}
+(def base-config {:web  {:port 9197
+                         :debug true}
                   :jdbc {:subprotocol "postgresql"
                          :subname     "//localhost:5432/anychart_sample"
                          :classname   "org.postgresql.Driver"
