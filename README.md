@@ -27,8 +27,8 @@ GRANT ALL PRIVILEGES ON DATABASE anychart_sample TO anychart_user;
 # exit psql
 \q
 
-# run dump
-psql anychart_sample < dump
+# run dump (ensure you are in project root folder)
+psql anychart_sample < dump.sql
 ```
 
 
